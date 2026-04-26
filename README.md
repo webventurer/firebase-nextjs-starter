@@ -51,8 +51,6 @@ This project uses [codefu](https://github.com/webventurer/codefu) for AI-assiste
 ```bash
 gh repo clone webventurer/codefu
 add-codefu.sh  # if not there already
-gh repo clone webventurer/firebase-nextjs-starter
-cd firebase-nextjs-starter
 ```
 
 ## What's in this repo
