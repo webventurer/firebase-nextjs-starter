@@ -7,7 +7,20 @@ Two ways to build a Next.js SaaS:
 
 Most stack debates frame this as old-vs-new or simple-vs-advanced. Both are wrong. <mark>The real distinction is *bundled* vs *modular* — how tightly the pieces are integrated, and what that integration costs you in lock-in.</mark>
 
-This doc is the long version of `stack.md`'s "Why Firebase" section: a deeper look at what each side actually wins on, and what each side pays for it.
+Firebase isn't "more advanced" than the modular stack — it's more **bundled**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
+
+## At a glance
+
+| Concern | Firebase (this starter) | Neon + Clerk + Drizzle ([app-starter](https://github.com/webventurer/app-starter)) |
+|:--------|:------------------------|:--------------------------------------------|
+| **Database** | Firestore (NoSQL document store) | Postgres |
+| **Auth** | Firebase Auth (built-in) | Clerk (third-party SaaS) |
+| **Realtime** | Yes — Firestore listeners | No — would need a separate service |
+| **Storage** | Yes — Firebase Storage | No — bring your own (S3, R2) |
+| **Edge functions** | Yes — Cloud Functions | No (Hono runs anywhere though) |
+| **Offline support** | Yes — Firestore offline cache | No |
+| **Pricing model** | Pay per read/write/storage | Pay for compute |
+| **Vendor lock-in** | **High** — proprietary APIs | Low — standard Postgres |
 
 ## What bundled actually buys you
 
@@ -94,12 +107,22 @@ Drizzle gives you fully-typed SQL queries. Firestore's TypeScript story is `as T
 | **No mobile SDK story** | If you ever go native, you build an API + auth + offline cache for that surface |
 | **Auth security duplicated** | Every API route re-implements the same auth check; one mistake leaks data |
 
-## Decision matrix
+## When to pick which
 
-| Pick | When |
-|:-----|:-----|
-| **Firebase (this starter)** | You need realtime *or* offline *or* mobile, OR you want to skip writing a backend for CRUD, OR speed-to-launch dominates other concerns |
-| **Modular ([app-starter](https://github.com/webventurer/app-starter))** | None of the above, AND you want long-term data portability, AND you're comfortable wiring services together |
+**Pick Firebase (this starter) when:**
+
+- You want auth + database + realtime + storage bundled, not glued together yourself
+- You're shipping a mobile-first or offline-capable app
+- You want to skip writing a backend for typical CRUD
+- Time-to-launch matters more than long-term portability
+- You're comfortable with NoSQL data modelling
+
+**Pick modular ([app-starter](https://github.com/webventurer/app-starter)) when:**
+
+- You want standard Postgres so you can switch hosting providers later
+- You want stronger type guarantees through your data layer (Drizzle)
+- You expect to outgrow Firebase's pricing model on heavy reads
+- None of the bundled wins (realtime, offline, mobile) apply to your product
 
 <mark>The honest default for a typical SaaS dashboard with no realtime/offline/mobile needs is **modular**.</mark> Firebase earns its place when its bundle solves an integration problem you'd otherwise have to solve yourself.
 

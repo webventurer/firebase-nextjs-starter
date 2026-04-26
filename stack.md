@@ -12,31 +12,7 @@ If you have **no marketing surface** and the product is purely an authenticated 
 
 ## Why Firebase, not Neon + Clerk + Drizzle
 
-The real trade-off is **modular vs bundled**. Firebase isn't "more advanced" than Neon + Clerk + Drizzle — it's more **bundled**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
-
-For the long-form version of this comparison — what each stack actually wins on, what each pays for it, and where the modular default applies — see [`firebase-vs-modular.md`](firebase-vs-modular.md).
-
-| Concern | Firebase (this starter) | Neon + Clerk + Drizzle ([app-starter](https://github.com/webventurer/app-starter)) |
-|:--------|:------------------------|:--------------------------------------------|
-| **Database** | Firestore (NoSQL document store) | Postgres |
-| **Auth** | Firebase Auth (built-in) | Clerk (third-party SaaS) |
-| **Realtime** | Yes — Firestore listeners | No — would need a separate service |
-| **Storage** | Yes — Firebase Storage | No — bring your own (S3, R2) |
-| **Edge functions** | Yes — Cloud Functions | No (Hono runs anywhere though) |
-| **Offline support** | Yes — Firestore offline cache | No |
-| **Pricing model** | Pay per read/write/storage | Pay for compute |
-| **Vendor lock-in** | **High** — proprietary APIs | Low — standard Postgres |
-
-**Pick Firebase when:**
-- You want auth + database + realtime + storage bundled, not glued together yourself
-- You're shipping a mobile-first or offline-capable app
-- Time-to-launch matters more than long-term portability
-- You're comfortable with NoSQL data modelling
-
-**Pick the modular route when:**
-- You want standard Postgres so you can switch hosting providers later
-- You want stronger type guarantees through your data layer (Drizzle)
-- You expect to outgrow Firebase's pricing model on heavy reads
+See [`firebase-vs-modular.md`](firebase-vs-modular.md) — the long-form comparison covers the trade-off (bundled vs modular), the at-a-glance feature table, what each stack wins on, what each pays for it, and when each is the right pick.
 
 ## Core technologies
 
