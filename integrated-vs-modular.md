@@ -72,7 +72,7 @@ Five things hard to replicate with the integrated stack.
 
 ### 1. Data portability
 
-Postgres is the default for a reason — schema migrations, joins, aggregations, window functions are all standard. You can switch hosts (Neon → Supabase → RDS) in a weekend; the data layer travels with you.
+Postgres is the default for a reason — schema migrations, joins, aggregations, window functions are all standard. You can switch hosts (Neon → Supabase → RDS) without rewriting the data layer; it travels with you.
 
 Firestore's data model is documents-with-subcollections. <mark>Leaving Firebase later means rewriting every query against a relational schema, not porting it.</mark> Modular keeps that exit door open from day one.
 
@@ -99,7 +99,7 @@ Joins. Aggregations. Migrations. Multi-condition filters without composite index
 - You need realtime, offline, or mobile — these are hardest to bolt on later
 - You want to skip writing a backend for typical CRUD
 - A single vendor (one bill, one dashboard, one support contract) is a feature, not a constraint
-- Time-to-launch matters more than long-term portability
+- Shipping the product matters more than keeping the data layer portable
 - You're comfortable with NoSQL data modelling
 
 **Pick modular ([app-starter](https://github.com/webventurer/app-starter)) when:**
@@ -107,10 +107,31 @@ Joins. Aggregations. Migrations. Multi-condition filters without composite index
 - You need standard SQL — joins, aggregations, migrations, ad-hoc queries
 - You want compile-time type safety in your data layer
 - Per-read pricing worries you and you expect heavy traffic
-- Long-term data portability matters (cloud-switch insurance)
+- Data portability matters (cloud-switch insurance)
 - You'd rather pick best-of-breed for each piece than accept what comes in the box
 
 If wins on both sides apply to your product, prioritise the *unforgiving* ones: realtime, offline, and mobile are hard to bolt on after you've shipped (lean integrated); SQL portability and predictable scaling are hard to retrofit (lean modular). The softer wins (DX preferences, vendor count) shouldn't drive the choice.
+
+## Ship fast, port later
+
+A common pragmatic frame: pick integrated, ship the SaaS, validate the idea, port to modular if costs mount up. <mark>Most of the traditional "migration tax" argument has weakened — Claude Code (and similar AI tooling) can rewrite a Firestore data layer to Postgres mechanically, query by query, when the data shape is rectangular.</mark> The rewrite-every-query work that used to require senior engineers doing it by hand is no longer that. The cost-of-being-wrong on "ship integrated first" has dropped.
+
+That said, here's how to actually make this play work.
+
+### Hedges that earn the right to port later
+
+1. Build behind a thin **repository layer** so swapping Firestore for Postgres later doesn't touch product code — just the layer beneath it.
+2. Don't lean on Firestore-only features (realtime listeners, offline cache, deep subcollections) unless the product genuinely needs them. These are the parts that don't auto-port — they're rebuilt UX, not rewritten queries.
+3. Keep the data shape **rectangular** (rows-and-columns; could be Postgres if you squint) so the AI port has clean targets.
+4. Set a **cost trigger** (a spend threshold, or per-active-user cost) that kicks off migration planning *before* it becomes a crisis, not after.
+
+### Honest take
+
+The "ship fast, port later" plan works best for SaaS that doesn't actually lean on Firestore's specific strengths. For those products, the modular stack is easier to wire up than you think — and saves the migration tax entirely. If you genuinely need realtime, offline, or mobile, Firebase is the right call *and* the migration becomes much harder (those features don't auto-port), so plan to stay rather than plan to leave.
+
+### The other migration trigger
+
+Costs aren't the only thing that pushes teams off Firebase. **Team frustration** is the more common one — engineers hitting NoSQL walls (wanting joins, aggregations, type-safe queries), morale erosion, slow feature shipping after the initial speed win. That trigger comes earlier than cost and is harder to predict. Worth checking whether the team has prior NoSQL experience or is learning Firestore mid-build — the second case bites earlier.
 
 ## Things this comparison doesn't decide
 
