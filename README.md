@@ -25,6 +25,15 @@ Then create your Firebase project before scaffolding:
 
 > Skip this if you only want to explore the scaffold locally — `pnpm dev` works without Firebase wired up. You'll just hit errors on any auth/Firestore-touching route.
 
+## Claude Code setup
+
+This project uses [codefu](https://github.com/webventurer/codefu) for AI-assisted development skills and commands. Clone it as a sibling before scaffolding — `scripts/setup.sh` looks for `../codefu` and silently links the wrong skills if it's missing:
+
+```bash
+gh repo clone webventurer/codefu
+add-codefu.sh  # if not there already
+```
+
 ## Quick start
 
 ```bash
@@ -43,15 +52,6 @@ This creates a new `my-app/` directory alongside the starter and:
 7. Sets up three Stripe routes — webhook, checkout, billing portal
 8. Sets up Biome for linting + formatting (replaces ESLint)
 9. Initialises a git repo with the first commit
-
-## Claude Code setup
-
-This project uses [codefu](https://github.com/webventurer/codefu) for AI-assisted development skills and commands. Add if not already cloned:
-
-```bash
-gh repo clone webventurer/codefu
-add-codefu.sh  # if not there already
-```
 
 ## What's in this repo
 
