@@ -1,6 +1,6 @@
 # Firebase starter stack
 
-A starting point for building a Next.js app on the bundled Firebase platform — Auth, Firestore, App Hosting, and Storage under one roof. Stripe for payments, Cloudflare R2 for cost-efficient object storage when egress matters, shadcn/ui + Tailwind v4 for styling. <mark>Each piece is replaceable, but the gravitational pull of Firebase is real — pick this stack when you want speed-to-launch over architectural neutrality.</mark>
+A starting point for building a Next.js app on the integrated Firebase platform — Auth, Firestore, App Hosting, and Storage under one roof. Stripe for payments, Cloudflare R2 for cost-efficient object storage when egress matters, shadcn/ui + Tailwind v4 for styling. <mark>Each piece is replaceable, but the gravitational pull of Firebase is real — pick this stack when you want speed-to-launch over architectural neutrality.</mark>
 
 Scaffold with `pnpm create next-app@latest` and add pieces as needed.
 
@@ -12,7 +12,7 @@ If you have **no marketing surface** and the product is purely an authenticated 
 
 ## Why Firebase, not Neon + Clerk + Drizzle
 
-See [`firebase-vs-modular.md`](firebase-vs-modular.md) — the long-form comparison covers the trade-off (bundled vs modular), the at-a-glance feature table, what each stack wins on, what each pays for it, and when each is the right pick.
+See [`integrated-vs-modular.md`](integrated-vs-modular.md) — the long-form comparison covers the trade-off (integrated vs modular), the at-a-glance feature table, what each stack wins on, what each pays for it, and when each is the right pick.
 
 ## Core technologies
 

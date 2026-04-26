@@ -1,13 +1,13 @@
-# Firebase vs modular: when each wins
+# Integrated vs modular: when each wins
 
 Two ways to build a Next.js SaaS:
 
-- **Bundled (this starter)** — Firebase Auth + Firestore + App Hosting + Storage under one project
+- **Integrated (this starter)** — Firebase Auth + Firestore + App Hosting + Storage under one project
 - **Modular ([app-starter](https://github.com/webventurer/app-starter))** — Hono + Clerk + Drizzle + Neon + Railway + R2
 
-Most stack debates frame this as old-vs-new or simple-vs-advanced. Both are wrong. <mark>The real distinction is *bundled* vs *modular* — how tightly the pieces are integrated, and what that integration costs you in lock-in.</mark>
+Most stack debates frame this as old-vs-new or simple-vs-advanced. Both are wrong. <mark>The real distinction is *integrated* vs *modular* — how tightly the pieces are bound together, and what that integration costs you in lock-in.</mark>
 
-Firebase isn't "more advanced" than the modular stack — it's more **bundled**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
+Firebase isn't "more advanced" than the modular stack — it's more **integrated**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
 
 ## At a glance
 
@@ -22,7 +22,7 @@ Firebase isn't "more advanced" than the modular stack — it's more **bundled**.
 | **Pricing model** | Pay per read/write/storage | Pay for compute |
 | **Vendor lock-in** | **High** — proprietary APIs | Low — standard Postgres |
 
-## What bundled actually buys you
+## What integrated actually buys you
 
 Six things Firebase gives you that the modular stack can't easily replicate.
 
@@ -68,7 +68,7 @@ Firebase = one bill, one dashboard, one status page, one support contract.
 
 Modular = roughly six vendors (Hono is OSS, but Clerk + Neon + Railway + Loops + PostHog + Stripe = six SaaS relationships). Six places to be billed surprises. Six status pages oncall has to know about.
 
-## What bundled costs you
+## What integrated costs you
 
 ### 1. Vendor lock-in is real
 
@@ -111,7 +111,7 @@ Drizzle gives you fully-typed SQL queries. Firestore's TypeScript story is `as T
 
 **Pick Firebase (this starter) when:**
 
-- You want auth + database + realtime + storage bundled, not glued together yourself
+- You want auth + database + realtime + storage integrated, not glued together yourself
 - You're shipping a mobile-first or offline-capable app
 - You want to skip writing a backend for typical CRUD
 - Time-to-launch matters more than long-term portability
@@ -122,7 +122,7 @@ Drizzle gives you fully-typed SQL queries. Firestore's TypeScript story is `as T
 - You want standard Postgres so you can switch hosting providers later
 - You want stronger type guarantees through your data layer (Drizzle)
 - You expect to outgrow Firebase's pricing model on heavy reads
-- None of the bundled wins (realtime, offline, mobile) apply to your product
+- None of the integrated wins (realtime, offline, mobile) apply to your product
 
 <mark>The honest default for a typical SaaS dashboard with no realtime/offline/mobile needs is **modular**.</mark> Firebase earns its place when its bundle solves an integration problem you'd otherwise have to solve yourself.
 

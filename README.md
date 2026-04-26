@@ -1,6 +1,6 @@
 # Firebase Starter
 
-A modern Next.js + Firebase starter — Next.js 16 (App Router) on the frontend, Firebase Auth + Firestore + App Hosting on the backend, with Stripe, shadcn/ui, Tailwind v4, and Vitest wired up. Built around the *bundled* Firebase route — auth, database, hosting, and storage all live under one project. The trade-off is vendor lock-in (see [stack.md](stack.md)). For a modular alternative (Vite + Hono + Neon + Clerk + Drizzle), see the sibling [`app-starter`](https://github.com/webventurer/app-starter).
+A modern Next.js + Firebase starter — Next.js 16 (App Router) on the frontend, Firebase Auth + Firestore + App Hosting on the backend, with Stripe, shadcn/ui, Tailwind v4, and Vitest wired up. Built around the *integrated* Firebase route — auth, database, hosting, and storage all live under one project. The trade-off is vendor lock-in (see [stack.md](stack.md)). For a modular alternative (Vite + Hono + Neon + Clerk + Drizzle), see the sibling [`app-starter`](https://github.com/webventurer/app-starter).
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ This creates a new `my-app/` directory alongside the starter and:
 |:-----|:-----------|:----------------|
 | [`scripts/create.sh`](scripts/create.sh) | Automated setup script — scaffolds Next.js, installs deps, configures Firebase + shadcn/ui + Biome | You don't — just run it |
 | [`package.json`](package.json) | Declarative dependency list for the full stack — the script copies this into your new project | When you want to see exactly what gets installed |
-| [`stack.md`](stack.md) | The *why* — explains why we chose Firebase-bundled over modular, what we considered, and what we rejected | Before starting a project, to understand the decisions |
+| [`stack.md`](stack.md) | The *why* — explains why we chose Firebase-integrated over modular, what we considered, and what we rejected | Before starting a project, to understand the decisions |
 | [`tech-spec.md`](tech-spec.md) | The *how* — project structure, Firebase project setup, env vars, deployment via App Hosting | During development, as a reference guide |
 | [`templates/`](templates) | Source-of-truth files copied into every new project (Firebase config, lib helpers, configs) | When you want to change the default scaffold |
 
@@ -97,5 +97,5 @@ pnpm add posthog-js
 
 - [stack.md](stack.md) — the rationale behind every technology choice
 - [tech-spec.md](tech-spec.md) — the actionable setup guide
-- [firebase-vs-modular.md](firebase-vs-modular.md) — the long-form comparison: when each stack wins, what each pays for it
+- [integrated-vs-modular.md](integrated-vs-modular.md) — the long-form comparison: when each stack wins, what each pays for it
 - [app-starter](https://github.com/webventurer/app-starter) — the modular alternative (Vite + Hono + Neon + Clerk + Drizzle)
