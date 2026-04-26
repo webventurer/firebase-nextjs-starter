@@ -93,4 +93,4 @@ pnpm add posthog-js
 
 - [stack.md](stack.md) — the rationale behind every technology choice
 - [tech-spec.md](tech-spec.md) — the actionable setup guide
-- [app-starter](../app-starter) — the modular alternative (Vite + Hono + Neon + Clerk + Drizzle)
+- [app-starter](https://github.com/webventurer/app-starter) — the modular alternative (Vite + Hono + Neon + Clerk + Drizzle)

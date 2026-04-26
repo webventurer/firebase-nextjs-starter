@@ -8,13 +8,13 @@ Scaffold with `pnpm create next-app@latest` and add pieces as needed.
 
 **Next.js for content + apps. Vite for pure apps.** Firebase App Hosting is built around Next.js (it deploys to Cloud Run with Next-aware caching and SSR). The App Router gives you server components, API routes, and SEO-friendly content pages in one bundle — which matters for SaaS products that have both an app surface (`/dashboard`) and a marketing surface (`/`, `/pricing`, `/blog`).
 
-If you have **no marketing surface** and the product is purely an authenticated dashboard, see [`app-starter`](../app-starter) — Vite is faster to boot, lighter to reason about, and has no opinions about routing or data fetching.
+If you have **no marketing surface** and the product is purely an authenticated dashboard, see [`app-starter`](https://github.com/webventurer/app-starter) — Vite is faster to boot, lighter to reason about, and has no opinions about routing or data fetching.
 
 ## Why Firebase, not Neon + Clerk + Drizzle
 
 The real trade-off is **modular vs bundled**. Firebase isn't "more advanced" than Neon + Clerk + Drizzle — it's more **bundled**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
 
-| Concern | Firebase (this starter) | Neon + Clerk + Drizzle ([app-starter](../app-starter)) |
+| Concern | Firebase (this starter) | Neon + Clerk + Drizzle ([app-starter](https://github.com/webventurer/app-starter)) |
 |:--------|:------------------------|:--------------------------------------------|
 | **Database** | Firestore (NoSQL document store) | Postgres |
 | **Auth** | Firebase Auth (built-in) | Clerk (third-party SaaS) |
