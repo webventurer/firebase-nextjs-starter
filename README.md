@@ -1,6 +1,6 @@
 # Firebase Starter
 
-A modern Next.js + Firebase starter — Next.js 16 (App Router) on the frontend, Firebase Auth + Firestore + App Hosting on the backend, with Stripe, shadcn/ui, Tailwind v4, and Vitest wired up. Built around the *bundled* Firebase route — auth, database, hosting, and storage all live under one project. The trade-off is vendor lock-in (see [stack.md](stack.md)). For a modular alternative (Vite + Hono + Neon + Clerk + Drizzle), see the sibling [`app-starter`](../app-starter).
+A modern Next.js + Firebase starter — Next.js 16 (App Router) on the frontend, Firebase Auth + Firestore + App Hosting on the backend, with Stripe, shadcn/ui, Tailwind v4, and Vitest wired up. Built around the *bundled* Firebase route — auth, database, hosting, and storage all live under one project. The trade-off is vendor lock-in (see [stack.md](stack.md)). For a modular alternative (Vite + Hono + Neon + Clerk + Drizzle), see the sibling [`app-starter`](https://github.com/webventurer/app-starter).
 
 ## Prerequisites
 
