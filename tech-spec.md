@@ -127,7 +127,7 @@ my-app/
 ```bash
 # Update your project ID
 mv .firebaserc.template .firebaserc
-# Edit .firebaserc and replace YOUR_PROJECT_ID
+# Edit .firebaserc and replace your-project-id
 ```
 
 ## Configuration
@@ -284,8 +284,8 @@ firebase apphosting:secrets:set STRIPE_SECRET_KEY
 firebase apphosting:rollouts:create YOUR_BACKEND_NAME --git-branch main
 
 # 3. Once the rollout is healthy, disable the old version (keeps the audit trail; doesn't delete)
-gcloud secrets versions list STRIPE_SECRET_KEY --project=YOUR_PROJECT_ID
-gcloud secrets versions disable OLD_VERSION_NUMBER --secret=STRIPE_SECRET_KEY --project=YOUR_PROJECT_ID
+gcloud secrets versions list STRIPE_SECRET_KEY --project=your-project-id
+gcloud secrets versions disable OLD_VERSION_NUMBER --secret=STRIPE_SECRET_KEY --project=your-project-id
 ```
 
 <mark>Disable, don't destroy.</mark> A disabled version can be re-enabled if a deploy regression makes you need to roll back; a destroyed version is gone forever. After 30 days of confidence in the new value, destroy the old version with `gcloud secrets versions destroy`.

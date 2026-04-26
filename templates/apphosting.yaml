@@ -17,9 +17,9 @@ env:
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
     value: "YOUR_DOMAIN"
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    value: "YOUR_PROJECT_ID"
+    value: "your-project-id"
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    value: "YOUR_PROJECT_ID.firebasestorage.app"
+    value: "your-project-id.firebasestorage.app"
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
     value: "YOUR_MESSAGING_SENDER_ID"
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
