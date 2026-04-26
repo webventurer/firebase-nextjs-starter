@@ -17,6 +17,14 @@ npm install -g firebase-tools
 firebase login
 ```
 
+Then create your Firebase project before scaffolding:
+
+1. Create a project at [console.firebase.google.com](https://console.firebase.google.com)
+2. Enable Authentication and Firestore in the console
+3. Note your project ID — you'll paste it into `.firebaserc` after scaffolding
+
+> Skip this if you only want to explore the scaffold locally — `pnpm dev` works without Firebase wired up. You'll just hit errors on any auth/Firestore-touching route.
+
 ## Quick start
 
 ```bash
@@ -59,12 +67,10 @@ cd firebase-nextjs-starter
 
 ## After install
 
-1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
-2. Enable Authentication and Firestore in the console
-3. Update `.firebaserc` with your project ID
-4. Copy `.env.example` to `.env.local` and fill in the values
-5. Update `apphosting.yaml` with your public Firebase config
-6. Run `pnpm dev` — the app should boot on `http://localhost:3000`
+1. Update `.firebaserc` with the project ID you noted in Prerequisites
+2. Copy `.env.example` to `.env.local` and fill in the values
+3. Update `apphosting.yaml` with your public Firebase config
+4. Run `pnpm dev` — the app should boot on `http://localhost:3000`
 
 See [tech-spec.md](tech-spec.md) for the full setup walkthrough and deployment steps.
 
