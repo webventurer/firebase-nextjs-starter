@@ -97,4 +97,5 @@ pnpm add posthog-js
 
 - [stack.md](stack.md) — the rationale behind every technology choice
 - [tech-spec.md](tech-spec.md) — the actionable setup guide
+- [firebase-vs-modular.md](firebase-vs-modular.md) — the long-form comparison: when each stack wins, what each pays for it
 - [app-starter](https://github.com/webventurer/app-starter) — the modular alternative (Vite + Hono + Neon + Clerk + Drizzle)

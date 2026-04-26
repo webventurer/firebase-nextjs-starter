@@ -14,6 +14,8 @@ If you have **no marketing surface** and the product is purely an authenticated 
 
 The real trade-off is **modular vs bundled**. Firebase isn't "more advanced" than Neon + Clerk + Drizzle — it's more **bundled**. Auth, database, hosting, storage, realtime, and offline sync all live under one project. The cost is vendor lock-in: <mark>Firestore's data model doesn't translate to anything else, so leaving Firebase later means a rewrite, not a port.</mark>
 
+For the long-form version of this comparison — what each stack actually wins on, what each pays for it, and where the modular default applies — see [`firebase-vs-modular.md`](firebase-vs-modular.md).
+
 | Concern | Firebase (this starter) | Neon + Clerk + Drizzle ([app-starter](https://github.com/webventurer/app-starter)) |
 |:--------|:------------------------|:--------------------------------------------|
 | **Database** | Firestore (NoSQL document store) | Postgres |
